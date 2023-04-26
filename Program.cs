@@ -19,7 +19,15 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
+//Quien puede utilizarla y quien no puede la API
+//app.UseCors();
+
 app.UseAuthorization();
+
+//mensaje de bienvenida mostrandonos la API
+//app.UseWelcomePage();
+
+app.UseTimeMiddleware();
 
 app.MapControllers();
 
