@@ -32,10 +32,12 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    [Route("get/weatherForecast")]
-    [Route("[action]")]  // toma el nombre del end point en la ruta
+    // [Route("get/weatherForecast")]
+    // [Route("[action]")]  // toma el nombre del end point en la ruta
     public IEnumerable<WeatherForecast> Get1()
     {
+        //Estos msj van a ser leidos por diferentes servicios cuando publiquemos la api en la nube
+        //_logger.LogInformation("Retornando la lista");
         return ListWeatherForecast;
     }
 
@@ -52,7 +54,6 @@ public class WeatherForecastController : ControllerBase
     public IActionResult Delete(int index)
     {
         ListWeatherForecast.RemoveAt(index);
-
         return Ok();
     }
 }
