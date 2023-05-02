@@ -9,9 +9,12 @@ public class HelloWorldController : ControllerBase
 { 
     IHelloWorldService helloWorldService;
     
-    public HelloWorldController(IHelloWorldService helloWorld)
+    TareasContext dbcontext;
+    
+    public HelloWorldController(IHelloWorldService helloWorld, TareasContext db)
     {
         helloWorldService = helloWorld;
+        dbcontext = db;
     }
 
     [HttpGet]
@@ -19,5 +22,17 @@ public class HelloWorldController : ControllerBase
     {
         return Ok(helloWorldService.GetHelloWorld());
     }
+
+    //metodo para comprobar que DB esta creada
+    [HttpGet]
+    [Route("createdb")]
+    public IActionResult CreateDataBase()
+    {
+        dbcontext.Database.EnsureCreated();
+
+        return Ok();
+    }
+
+
 
 }

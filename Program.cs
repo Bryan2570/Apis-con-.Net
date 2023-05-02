@@ -1,3 +1,4 @@
+using webapi;
 using webapi.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+//CoNFIGURACION DE ENTITY FRAMEWORK sql 
+builder.Services.AddSqlServer<TareasContext>("Data Source=DESKTOP-02KNSKU; Initial Catalog=TareasDb; user id=sa;password=12345");
+
 //builder.Services.AddScoped<IHelloWorldService, HelloWorldSercvice>();
 
 //otra manera de inyectar
